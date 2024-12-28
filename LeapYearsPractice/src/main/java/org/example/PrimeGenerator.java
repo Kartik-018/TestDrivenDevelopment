@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 public class PrimeGenerator {
-    public static int GetPrime(){
+    public static int getPrime(){
         List<Integer> primes = new ArrayList<>();
         for (int i = 501; i < 600; i++) {
             if (isPrime(i)) {

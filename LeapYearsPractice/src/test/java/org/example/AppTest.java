@@ -35,11 +35,19 @@ public class AppTest
         assertTrue(LeapYear.isLeapYear(2016));
         assertTrue(LeapYear.isLeapYear(1996));
         assertTrue(LeapYear.isLeapYear(2104));
-        assertTrue(LeapYear.isLeapYear(4*PrimeGenerator.GetPrime()));
+        assertTrue(LeapYear.isLeapYear(4*PrimeGenerator.getPrime()));
     }
+    public void yearWhichIsNotLeap(){
+        assertFalse(LeapYear.isLeapYear(2100));
+        assertFalse(LeapYear.isLeapYear(1900));
+        assertFalse(LeapYear.isLeapYear(1800));
+        assertFalse(LeapYear.isLeapYear(RandNum.getRandNum()));
+    }
+
     public void testApp()
     {
         leapYearDivisibleBy400();
         leapYearDivisibleBy4ButNotBy100();
+        yearWhichIsNotLeap();
     }
 }
