@@ -1,7 +1,7 @@
 package org.example;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
+import junit.framework.Test;//An interface that represents a test in JUnit framework
+import junit.framework.TestCase;//A base class for creating test cases
 import junit.framework.TestSuite;
 
 /**
@@ -10,27 +10,20 @@ import junit.framework.TestSuite;
 public class AppTest 
     extends TestCase
 {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
+    
     public AppTest( String testName )
     {
         super( testName );
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
     public static Test suite()
     {
         return new TestSuite( AppTest.class );
     }
 
-    /**
-     * Rigourous Test :-)
-     */
+    public  void leapYearDivisibleBy400(){
+        assertTrue(LeapYear.isLeapYear(4000));
+    }
     public void testApp()
     {
         assertTrue( true );
