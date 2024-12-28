@@ -23,9 +23,14 @@ public class AppTest
 
     public  void leapYearDivisibleBy400(){
         assertTrue(LeapYear.isLeapYear(4000));
+        assertTrue(LeapYear.isLeapYear(2000));
+    }
+    public void leapYearDivisibleBy4ButNotBy100(){
+        assertTrue(LeapYear.isLeapYear(2024));
     }
     public void testApp()
     {
-        assertTrue( true );
+        leapYearDivisibleBy400();
+        leapYearDivisibleBy4ButNotBy100();
     }
 }
