@@ -4,6 +4,10 @@ import junit.framework.Test;//An interface that represents a test in JUnit frame
 import junit.framework.TestCase;//A base class for creating test cases
 import junit.framework.TestSuite;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 /**
  * Unit test for simple App.
  */
@@ -21,12 +25,17 @@ public class AppTest
         return new TestSuite( AppTest.class );
     }
 
+
     public  void leapYearDivisibleBy400(){
         assertTrue(LeapYear.isLeapYear(4000));
         assertTrue(LeapYear.isLeapYear(2000));
     }
     public void leapYearDivisibleBy4ButNotBy100(){
         assertTrue(LeapYear.isLeapYear(2024));
+        assertTrue(LeapYear.isLeapYear(2016));
+        assertTrue(LeapYear.isLeapYear(1996));
+        assertTrue(LeapYear.isLeapYear(2104));
+        assertTrue(LeapYear.isLeapYear(4*PrimeGenerator.GetPrime()));
     }
     public void testApp()
     {
