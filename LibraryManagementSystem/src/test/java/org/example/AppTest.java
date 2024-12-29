@@ -2,8 +2,12 @@
 package org.example;
 
 
+
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.Map;
 
 public class AppTest {
     private Library library;
@@ -12,8 +16,15 @@ public class AppTest {
          library=new Library();
      }
      @Test
-    void testAddBookUsingArray() {
-        library.addBook(new String[]{"1234", "The forgotten sons", "Trinanjan Chakraborty", "2020"}, 1);
+     void testAddSameBookIncreasesQuantity() {
+         Book bookA = new Book("1", "TheForgottenSons", "TrinanjanChakraborty", 2020);
+         library.addBook(bookA, 3); // Add first time
+         library.addBook(bookA, 2); // Add second time
+         Book bookB=new Book("2","RandomBook","Random",2024);
+         library.addBook(bookB,1);
+         Map<Book, Integer> books = library.viewBooks();
+         assertEquals(5, books.get(bookA));
+         assertEquals(1,books.get(bookB));
 
-    }
+     }
 }
