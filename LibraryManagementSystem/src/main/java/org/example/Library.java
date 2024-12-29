@@ -32,4 +32,17 @@ public class Library {
         }
         return availableBooks;
     }
+
+    public String borrowBook(String isbn) {
+        if (books.containsKey(isbn)) {
+            BookEntry entry = books.get(isbn);
+            if (entry.quantity > 0) {
+                entry.quantity -= 1;
+                if (entry.quantity == 0) {
+                    books.remove(isbn);
+                }
+                return "Book borrowed successfully";
+            }
+        }
+    }
 }

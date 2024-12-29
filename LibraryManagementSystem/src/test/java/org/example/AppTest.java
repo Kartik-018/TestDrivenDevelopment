@@ -40,6 +40,13 @@ public class AppTest extends TestCase {
     public void testBorrowBook(){
         String result=library.borrowBook("1");
         assertEquals("Book borrowed successfully", result);
+        String result1=library.borrowBook("1");
+        assertEquals("Book borrowed successfully", result1);
+        String result2=library.borrowBook("1");
+        assertEquals("Book borrowed successfully", result2);
+        String result3=library.borrowBook("1");
+        assertEquals("Book borrowed successfully", result3);
+
     }
 
     public void testApp() {
