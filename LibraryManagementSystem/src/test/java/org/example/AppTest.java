@@ -47,5 +47,11 @@ public class AppTest {
         assertEquals("Book not found.", result);
     }
 
-
+    @Test
+    void testReturnBook() {
+        Book bookD = new Book("4321", "The Autobiography of a Yogi", "Paramahansa Yogananda", 1946); // Though not strictly cricket, a spiritual book popular among cricket players
+        library.addBook(bookD, 0); // Adding to books collection but no copies initially
+        library.returnBook("4321");
+        assertEquals(1, library.viewBooks().get(bookD));
+    }
 }
