@@ -54,4 +54,15 @@ public class AppTest {
         library.returnBook("4321");
         assertEquals(1, library.viewBooks().get(bookD));
     }
+
+    @Test
+    void testViewBooks() {
+        Book bookA = new Book("1234", "My Life in Cricket", "Dennis Lillee", 1982); // Dennis Lillee's autobiography
+        Book bookB = new Book("5678", "The Spirit of Cricket", "Mike Brearley", 2017); // Mike Brearley's insights on cricket
+        library.addBook(bookA, 2);
+        library.addBook(bookB, 1);
+        Map<Book, Integer> books = library.viewBooks();
+        assertEquals(2, books.get(bookA));
+        assertEquals(1, books.get(bookB));
+    }
 }
