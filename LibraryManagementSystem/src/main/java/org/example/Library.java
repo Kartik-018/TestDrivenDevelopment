@@ -52,5 +52,14 @@ public class Library {
         return "Book not found.";
     }
 
-
+    // Return a book to the library
+    public void returnBook(String isbn) {
+        if (books.containsKey(isbn)) {
+            BookEntry entry = books.get(isbn);
+            entry.quantity += 1; // Increase quantity of existing book
+        } else {
+            System.out.println("Book not found in library records, adding it as a new book.");
+            books.put(isbn, new BookEntry(new Book(isbn, "Unknown Title", "Unknown Author", 0), 1));
+        }
+    }
 }
