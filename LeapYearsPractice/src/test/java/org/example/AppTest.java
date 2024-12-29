@@ -4,9 +4,7 @@ import junit.framework.Test;//An interface that represents a test in JUnit frame
 import junit.framework.TestCase;//A base class for creating test cases
 import junit.framework.TestSuite;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+
 
 /**
  * Unit test for simple App.
