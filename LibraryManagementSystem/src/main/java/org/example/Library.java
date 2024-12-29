@@ -1,4 +1,6 @@
+// File: Library.java
 package org.example;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,7 +18,7 @@ public class Library {
         }
     }
 
-    // Add a book using a Book object
+    // Add a book to the library
     public void addBook(Book book, int quantity) {
         if (books.containsKey(book.getIsbn())) {
             BookEntry entry = books.get(book.getIsbn());
@@ -25,6 +27,8 @@ public class Library {
             books.put(book.getIsbn(), new BookEntry(book, quantity)); // Add new book
         }
     }
+
+    // View all available books
     public Map<Book, Integer> viewBooks() {
         Map<Book, Integer> availableBooks = new HashMap<>();
         for (BookEntry entry : books.values()) {
@@ -33,6 +37,7 @@ public class Library {
         return availableBooks;
     }
 
+    // Borrow a book from the library
     public String borrowBook(String isbn) {
         if (books.containsKey(isbn)) {
             BookEntry entry = books.get(isbn);
@@ -41,8 +46,11 @@ public class Library {
                 if (entry.quantity == 0) {
                     books.remove(isbn);
                 }
-                return "Book borrowed successfully";
+                return "Book borrowed successfully.";
             }
         }
+        return "Book not found.";
     }
+
+
 }

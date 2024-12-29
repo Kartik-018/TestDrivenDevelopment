@@ -1,56 +1,51 @@
+// File: AppTest.java
 package org.example;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
-
-/**
- * Unit test for simple App.
- */
-public class AppTest extends TestCase {
-
+public class AppTest {
     private Library library;
 
-    public AppTest(String testName) {
-        super(testName);
-    }
-
-    public static Test suite() {
-        return new TestSuite(AppTest.class);
-    }
-
-    @Override
-    protected void setUp() { // Corrected method name
+    @BeforeEach
+    void setup() {
         library = new Library();
     }
 
-    public void testAddBook() {
-        Book bookA = new Book("1", "TheForgottenSons", "TrinanjanChakraborty", 2020);
+    @Test
+    void testAddSameBookIncreasesQuantity() {
+        Book bookA = new Book("1234", "Playing It My Way", "Sachin Tendulkar", 2014); // Sachin Tendulkar's autobiography
         library.addBook(bookA, 3); // Add first time
         library.addBook(bookA, 2); // Add second time
-        Book bookB = new Book("2", "RandomBook", "Random", 2024);
-        library.addBook(bookB, 1);
         Map<Book, Integer> books = library.viewBooks();
-        assertEquals((Integer) 5, books.get(bookA));
-        assertEquals((Integer) 1, books.get(bookB));
-    }
-    public void testBorrowBook(){
-        String result=library.borrowBook("1");
-        assertEquals("Book borrowed successfully", result);
-        String result1=library.borrowBook("1");
-        assertEquals("Book borrowed successfully", result1);
-        String result2=library.borrowBook("1");
-        assertEquals("Book borrowed successfully", result2);
-        String result3=library.borrowBook("1");
-        assertEquals("Book borrowed successfully", result3);
-
+        assertEquals(5, books.get(bookA));
     }
 
-    public void testApp() {
-        testAddBook();
-        testBorrowBook();
+    @Test
+    void testAddNewBook() {
+        Book bookA = new Book("1234", "The Test of My Life", "Yuvraj Singh", 2007); // Yuvraj Singh's biography
+        library.addBook(bookA, 3);
+        Map<Book, Integer> books = library.viewBooks();
+        assertEquals(3, books.get(bookA));
     }
+
+    @Test
+    void testBorrowBookSuccess() {
+        Book bookA = new Book("1234", "Behind the Shades", "Shane Warne", 2008); // Shane Warne's biography
+        library.addBook(bookA, 1);
+        String result = library.borrowBook("1234");
+        assertEquals("Book borrowed successfully.", result);
+        assertFalse(library.viewBooks().containsKey(bookA));
+    }
+
+    @Test
+    void testBorrowBookNotFound() {
+        String result = library.borrowBook("9999"); // Non-existent book
+        assertEquals("Book not found.", result);
+    }
+
+
 }
